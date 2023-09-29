@@ -22,6 +22,7 @@ def solution(maps):
                     queue.append((nx,ny))
 
          return maps[n-1][m-1]
+    ## 순회 다했는데, 마지막값이 업데이트 안된 상태. 기본값인 1인 상태면 길 못찾았다는 의미니까 -1 반환
     if bfs(0,0)==1:
         return -1
     else :answer = bfs(0,0)
