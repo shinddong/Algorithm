@@ -1,30 +1,29 @@
 from collections import deque
 def solution(maps):
-    answer=0
-    dx=[-1,1,0,0]
-    dy=[0,0,-1,1]
+    dx=[0,0,-1,1]
+    dy=[-1,1,0,0]
+    x,y=1,1
     n=len(maps)
     m=len(maps[0])
+    answer=0
     def bfs(x,y):
-         queue=deque()
-         queue.append((x,y))
-         while queue:
-            x,y= queue.popleft()
+        
+        q=deque()
+        q.append((x,y))
+        while q:
+            x,y=q.popleft()
             for i in range(4):
-                nx=x+dx[i]
-                ny=y+dy[i]
-                if nx < 0 or nx >= n or ny < 0 or ny >= m:
-                    continue   
-                if maps[nx][ny]==0:
-                    continue
-                if maps[nx][ny]==1:
-                    maps[nx][ny]=maps[x][y]+1
-                    queue.append((nx,ny))
-
-         return maps[n-1][m-1]
-    ## 순회 다했는데, 마지막값이 업데이트 안된 상태. 기본값인 1인 상태면 길 못찾았다는 의미니까 -1 반환
+                    nx=x+dx[i]
+                    ny=y+dy[i]
+                    if nx <0 or nx>=n or ny<0 or ny>=m:
+                        continue
+                    if maps[nx][ny]==0:
+                        continue
+                    if maps[nx][ny]==1:
+                        maps[nx][ny]=maps[x][y]+1
+                        q.append((nx,ny))
+        return maps[n-1][m-1]
     if bfs(0,0)==1:
         return -1
-    else :answer = bfs(0,0)
+    else: answer=bfs(0,0)
     return answer
-    
