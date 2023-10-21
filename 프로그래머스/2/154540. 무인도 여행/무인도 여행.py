@@ -4,8 +4,8 @@ def solution(maps):
     dx=[-1,1,0,0]
     dy=[0,0,-1,1]
     answer = []
-    for i in range(len(maps)):
-        maps[i]=list(maps[i])
+    # for i in range(len(maps)):
+    #     maps[i]=list(maps[i])
     n=len(maps)
     m=len(maps[0])
     isVisited=[[0 for _ in range(m)]for _ in range(n)]
